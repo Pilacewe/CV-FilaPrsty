@@ -34,7 +34,7 @@ import {
   FaCertificate,
   FaWhatsapp,
 } from "react-icons/fa";
-
+import { VscCode } from "react-icons/vsc";
 import {
   SiFlutter,
   SiNextdotjs,
@@ -59,6 +59,7 @@ interface ProjectType {
   borderGroup: string;
   detailImage?: string; // Tanda ? artinya opsional (boleh ada boleh tidak)
   link?: string;
+  github?: string;
 }
 
 import { MdDesignServices, MdWifiTethering, MdAnalytics } from "react-icons/md";
@@ -71,17 +72,6 @@ export default function FeaturedProjects() {
   );
 
   const projects: ProjectType[] = [
-    {
-      id: 1,
-      title: "FTTH Network Migration",
-      desc: "Migrasi infrastruktur jaringan dari kabel UTP ke Fiber Optik di wilayah Ciapus. Mencakup splicing, manajemen core, dan instalasi perangkat di sisi klien. Proyek ini meningkatkan kecepatan internet pelanggan hingga 500%.",
-      tags: ["Fiber Optic", "Mikrotik", "Hardware"],
-      icon: <FaNetworkWired />,
-      color: "text-blue-400",
-      bgGroup: "group-hover:bg-blue-500/20",
-      borderGroup: "hover:border-blue-500/50",
-      link: "#",
-    },
     {
       id: 2,
       title: "Cooking App UI/UX",
@@ -102,7 +92,7 @@ export default function FeaturedProjects() {
       color: "text-amber-400",
       bgGroup: "group-hover:bg-amber-500/20",
       borderGroup: "hover:border-amber-500/50",
-      link: "#",
+      link: "/demo/kenangan/",
     },
     {
       id: 4,
@@ -113,7 +103,7 @@ export default function FeaturedProjects() {
       color: "text-purple-400",
       bgGroup: "group-hover:bg-purple-500/20",
       borderGroup: "hover:border-purple-500/50",
-      link: "#",
+      link: "/demo/concert/",
     },
     {
       id: 5,
@@ -138,15 +128,16 @@ export default function FeaturedProjects() {
       link: "/demo/clothing",
     },
     {
-      id: 7,
+      id: 7, // misal id proyek cabai
       title: "Sistem Deteksi Cabai",
-      desc: "Proyek IoT/Machine Learning untuk mendeteksi tingkat kematangan cabai menggunakan sensor warna atau pengolahan citra digital.",
-      tags: ["Python", "IoT", "Computer Vision"],
-      icon: <FaPepperHot />,
-      color: "text-red-500",
+      desc: "Sistem berbasis AI untuk mendeteksi penyakit pada tanaman cabai...",
+      icon: "🌶️",
+      color: "text-red-500", // Pastikan formatnya text-{warna}-{angka}
       bgGroup: "group-hover:bg-red-500/20",
       borderGroup: "hover:border-red-500/50",
-      link: "#",
+      tags: ["Python", "TensorFlow", "IoT"],
+      link: "https://link-demo-anda.com",
+      github: "#", // <--- TAMBAHKAN INI
     },
     {
       id: 8,
@@ -157,18 +148,18 @@ export default function FeaturedProjects() {
       color: "text-emerald-400",
       bgGroup: "group-hover:bg-emerald-500/20",
       borderGroup: "hover:border-emerald-500/50",
-      link: "#",
+      link: "/demo/publish-book/",
     },
     {
       id: 9,
-      title: "Desain Logo Sekolah",
+      title: "Desain Logo",
       desc: "Pembuatan identitas visual (branding) untuk institusi pendidikan/kegiatan sekolah menggunakan vektor grafis.",
       tags: ["Illustrator", "Branding", "Vector"],
       icon: <FaPenNib />,
       color: "text-indigo-400",
       bgGroup: "group-hover:bg-indigo-500/20",
       borderGroup: "hover:border-indigo-500/50",
-      link: "#",
+      link: "/demo/logo/",
     },
     {
       id: 10,
@@ -179,7 +170,7 @@ export default function FeaturedProjects() {
       color: "text-yellow-400",
       bgGroup: "group-hover:bg-yellow-500/20",
       borderGroup: "hover:border-yellow-500/50",
-      link: "#",
+      link: "/demo/poster/",
     },
   ];
   // State untuk Menu Mobile
@@ -654,10 +645,10 @@ export default function FeaturedProjects() {
                 color: "text-orange-600",
               },
               {
-                Icon: SiFlutter,
-                name: "Flutter",
-                desc: "Mobile Dev Basics",
-                color: "text-cyan-400",
+                Icon: VscCode,
+                name: "Visual Studio Code",
+                desc: "AI-Assisted Developer",
+                color: "text-blue-500",
               },
             ].map((skill, index) => (
               <div
@@ -888,168 +879,86 @@ export default function FeaturedProjects() {
           </div>
         </div>
       </section>
-      {/* --- PROJECTS --- */}
-
+      {/* --- PROJECTS SECTION --- */}
       <section
         id="projects"
-        className="py-24 px-6 bg-[#050505] border-t border-white/5"
+        className="py-24 px-6 bg-[#080808] border-t border-white/5"
       >
         <div className="max-w-7xl mx-auto">
-          {/* Header */}
+          {/* Header dengan Instruksi Klik */}
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
               Featured Projects
             </h2>
-            <p className="text-slate-500 text-lg max-w-2xl mx-auto">
-              Kumpulan portofolio yang mencakup keahlian Teknis Jaringan, Desain
-              UI/UX, Pengembangan IoT, hingga Desain Grafis.
+            <p className="text-slate-500 mb-6">
+              Selected works from Design & Engineering
             </p>
+
+            {/* INI PETUNJUK LIVE DEMO */}
+            <div className="inline-flex items-center gap-2 px-5 py-2.5 bg-cyan-900/20 border border-cyan-500/30 rounded-full animate-pulse">
+              <FaExternalLinkAlt className="text-cyan-400 text-sm" />
+              <span className="text-cyan-300 text-sm font-semibold tracking-wide">
+                Click on any card to view Live Demo
+              </span>
+            </div>
           </div>
 
-          {/* Grid Container */}
+          {/* Grid Projects */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {projects.map((item) => (
+            {projects.map((project) => (
               <div
-                key={item.id}
-                onClick={() => setSelectedProject(item)} // Membuka Modal
-                className={`group flex flex-col rounded-2xl bg-slate-900/50 border border-white/10 overflow-hidden transition-all duration-300 cursor-pointer hover:-translate-y-2 hover:shadow-2xl ${item.borderGroup}`}
+                key={project.id}
+                onClick={() => setSelectedProject(project)}
+                className={`group relative bg-[#0a0a0a] rounded-2xl overflow-hidden border border-white/5 ${project.borderGroup} transition-all duration-500 hover:-translate-y-2 cursor-pointer shadow-lg`}
               >
-                {/* Icon / Image Placeholder Area */}
-                <div className="h-48 bg-slate-800/50 flex items-center justify-center border-b border-white/5 relative overflow-hidden">
-                  {/* Background Glow on Hover */}
-                  <div
-                    className={`absolute inset-0 transition-colors duration-500 ${item.bgGroup} opacity-0 group-hover:opacity-100`}
-                  ></div>
+                {/* Header Warna Kartu */}
+                <div
+                  className={`h-2 w-full bg-gradient-to-r from-transparent via-current to-transparent opacity-50 ${project.color}`}
+                ></div>
 
-                  {/* Icon */}
-                  <div
-                    className={`text-6xl ${item.color} transform group-hover:scale-110 transition-transform duration-500 relative z-10 opacity-80`}
-                  >
-                    {item.icon}
+                <div className="p-8 relative z-10">
+                  {/* Icon & Title */}
+                  <div className="flex items-start justify-between mb-6">
+                    <div
+                      className={`p-3 rounded-xl bg-white/5 ${project.bgGroup} ${project.color} transition-colors duration-300`}
+                    >
+                      <div className="text-2xl">{project.icon}</div>
+                    </div>
+                    <div
+                      className={`p-2 rounded-full border border-white/10 opacity-0 group-hover:opacity-100 transition-all duration-300 ${project.color}`}
+                    >
+                      <FaExternalLinkAlt className="text-sm" />
+                    </div>
                   </div>
 
-                  {/* Overlay text on hover */}
-                  <div className="absolute bottom-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20">
-                    <span className="text-white text-xs font-bold uppercase tracking-widest bg-black/50 px-3 py-1 rounded-full border border-white/20">
-                      View Detail
-                    </span>
-                  </div>
-                </div>
-
-                {/* Content Area */}
-                <div className="p-8 flex-1 flex flex-col">
                   <h3 className="text-xl font-bold text-white mb-3 group-hover:text-cyan-400 transition-colors">
-                    {item.title}
+                    {project.title}
                   </h3>
-                  {/* Line clamp 2 untuk preview */}
-                  <p className="text-slate-400 text-sm mb-6 line-clamp-2 leading-relaxed flex-1">
-                    {item.desc}
+                  <p className="text-slate-400 text-sm line-clamp-3 leading-relaxed mb-6">
+                    {project.desc}
                   </p>
 
                   {/* Tags */}
-                  <div className="flex gap-2 flex-wrap mt-auto">
-                    {item.tags.map((tag, i) => (
+                  <div className="flex flex-wrap gap-2">
+                    {project.tags.slice(0, 3).map((tag, i) => (
                       <span
                         key={i}
-                        className="px-3 py-1 bg-white/5 rounded-full text-xs text-slate-300 border border-white/10"
+                        className="px-3 py-1 rounded-full bg-white/5 text-[10px] font-bold uppercase tracking-wider text-slate-500 border border-white/5"
                       >
                         {tag}
                       </span>
                     ))}
                   </div>
                 </div>
+
+                {/* Hover Gradient Background */}
+                <div
+                  className={`absolute inset-0 bg-gradient-to-b from-transparent to-current opacity-0 group-hover:opacity-5 transition-opacity duration-500 pointer-events-none ${project.color}`}
+                ></div>
               </div>
             ))}
           </div>
         </div>
-
-        {/* --- MODAL / POPUP SECTION --- */}
-        {selectedProject && (
-          <div className="fixed inset-0 z-[60] flex items-center justify-center p-4">
-            {/* Backdrop Blur (Klik di sini untuk tutup) */}
-            <div
-              className="absolute inset-0 bg-black/80 backdrop-blur-sm transition-opacity"
-              onClick={() => setSelectedProject(null)}
-            ></div>
-
-            {/* Modal Content */}
-            <div className="relative bg-[#0a0a0a] border border-white/10 rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl animate-fadeIn">
-              {/* Close Button */}
-              <button
-                onClick={() => setSelectedProject(null)}
-                className="absolute top-4 right-4 p-2 bg-white/5 rounded-full hover:bg-red-500/20 hover:text-red-400 transition-colors z-20 text-white"
-              >
-                <FaTimes />
-              </button>
-
-              {/* Header Image/Icon */}
-              <div
-                className={`h-40 sm:h-56 w-full flex items-center justify-center bg-gradient-to-b from-slate-900 to-[#0a0a0a] relative overflow-hidden`}
-              >
-                <div
-                  className={`absolute inset-0 opacity-20 ${selectedProject.color.replace(
-                    "text-",
-                    "bg-"
-                  )}`}
-                ></div>
-                <div
-                  className={`text-8xl ${selectedProject.color} drop-shadow-lg`}
-                >
-                  {selectedProject.icon}
-                </div>
-              </div>
-
-              {/* Body */}
-              <div className="p-6 sm:p-8">
-                <h3 className="text-2xl sm:text-3xl font-bold text-white mb-4">
-                  {selectedProject.title}
-                </h3>
-
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {selectedProject.tags.map((tag, i) => (
-                    <span
-                      key={i}
-                      className="px-3 py-1 bg-white/5 border border-white/10 rounded-md text-sm text-cyan-400"
-                    >
-                      #{tag}
-                    </span>
-                  ))}
-                </div>
-
-                <div className="prose prose-invert max-w-none text-slate-300 leading-relaxed mb-8 text-sm sm:text-base">
-                  <p>{selectedProject.desc}</p>
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-                    do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua. (Ini adalah tempat untuk deskripsi lebih detail
-                    tentang tantangan proyek, solusi teknis yang digunakan, dan
-                    hasil akhirnya).
-                  </p>
-                </div>
-
-                {/* Action Buttons */}
-                <div className="flex gap-4 border-t border-white/10 pt-6">
-                  <a
-                    href={selectedProject.link}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="flex-1 py-3 bg-cyan-600 hover:bg-cyan-500 text-white font-bold rounded-lg text-center transition-all flex items-center justify-center gap-2"
-                  >
-                    <FaExternalLinkAlt /> Live Demo
-                  </a>
-                  <a
-                    href="#"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="flex-1 py-3 bg-white/5 hover:bg-white/10 text-white font-bold rounded-lg text-center transition-all flex items-center justify-center gap-2 border border-white/10"
-                  >
-                    <FaGithub /> Source Code
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        )}
       </section>
 
       {/* --- CONTACT SECTION (Ditambahkan agar lengkap) --- */}
@@ -1100,14 +1009,127 @@ export default function FeaturedProjects() {
       <footer className="py-8 border-t border-white/5 text-center text-slate-600 text-sm">
         <p>© 2024 Fila Prasetyo Kurniawan. All rights reserved.</p>
       </footer>
-      {/* Scroll To Top Button */}
-      {showScrollTop && (
-        <button
-          onClick={scrollToTop}
-          className="fixed bottom-8 right-8 p-3 bg-cyan-600 text-white rounded-full shadow-lg hover:bg-cyan-500 transition-all z-50 animate-bounce-slow"
-        >
-          <FaArrowUp />
-        </button>
+
+      {/* --- MODAL / POPUP DETAIL (HANYA LIVE DEMO) --- */}
+      {/* --- MODAL / POPUP DETAIL --- */}
+      {selectedProject && (
+        <div className="fixed inset-0 z-[60] flex items-center justify-center px-4">
+          {/* Backdrop Blur */}
+          <div
+            className="absolute inset-0 bg-black/90 backdrop-blur-md transition-opacity duration-300"
+            onClick={() => setSelectedProject(null)}
+          ></div>
+
+          {/* Modal Content */}
+          <div className="relative w-full max-w-2xl bg-[#0F0F0F] rounded-2xl border border-white/10 shadow-2xl animate-in fade-in zoom-in duration-300 overflow-hidden ring-1 ring-white/10">
+            {/* Header Modal - Visual menarik dengan Icon Besar */}
+            <div className="relative h-40 bg-slate-900 overflow-hidden flex items-center justify-center group">
+              {/* Background Gradient Dinamis */}
+              <div
+                className={`absolute inset-0 opacity-30 bg-gradient-to-br from-black via-black to-current ${selectedProject.color}`}
+              ></div>
+
+              {/* Animated Background Shapes */}
+              <div
+                className={`absolute top-0 left-0 w-full h-full opacity-20 ${selectedProject.color.replace(
+                  "text-",
+                  "bg-"
+                )} blur-3xl transform scale-150`}
+              ></div>
+
+              {/* Icon */}
+              <div
+                className={`relative z-10 text-7xl drop-shadow-2xl transform transition-transform duration-500 group-hover:scale-110`}
+              >
+                {selectedProject.icon}
+              </div>
+
+              {/* Close Button */}
+              <button
+                onClick={() => setSelectedProject(null)}
+                className="absolute top-4 right-4 p-2 bg-black/40 hover:bg-red-500/80 text-white rounded-full transition-all duration-300 backdrop-blur-sm border border-white/10 z-20 hover:rotate-90"
+              >
+                <FaTimes size={18} />
+              </button>
+            </div>
+
+            {/* Body Modal */}
+            <div className="p-8">
+              {/* Label Kategori */}
+              <div className="flex items-center gap-3 mb-5">
+                <span
+                  className={`text-xs font-black uppercase tracking-[0.2em] px-3 py-1 rounded-full bg-white/5 border border-white/5 ${selectedProject.color}`}
+                >
+                  Project Details
+                </span>
+                <div className="h-px flex-1 bg-gradient-to-r from-white/10 to-transparent"></div>
+              </div>
+
+              {/* Judul & Deskripsi */}
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 leading-tight">
+                {selectedProject.title}
+              </h2>
+              <p className="text-slate-300 leading-relaxed mb-8 text-base md:text-lg font-light">
+                {selectedProject.desc}
+              </p>
+
+              {/* Tech Stack Tags */}
+              <div className="flex flex-wrap gap-2 mb-10">
+                {selectedProject.tags.map((tag, i) => (
+                  <div
+                    key={i}
+                    className={`px-4 py-1.5 rounded-lg text-xs font-bold border border-white/10 bg-[#1a1a1a] text-slate-400 shadow-sm flex items-center gap-2`}
+                  >
+                    <span
+                      className={`w-1.5 h-1.5 rounded-full ${selectedProject.color.replace(
+                        "text-",
+                        "bg-"
+                      )}`}
+                    ></span>
+                    {tag}
+                  </div>
+                ))}
+              </div>
+
+              {/* --- ACTION BUTTONS --- */}
+              <div className="flex flex-col sm:flex-row gap-4 pt-4 border-t border-white/5">
+                {/* BUTTON 1: LIVE DEMO (Selalu Muncul) */}
+                {selectedProject.link && (
+                  <a
+                    href={selectedProject.link}
+                    target="_blank"
+                    rel="noreferrer"
+                    className={`flex-1 flex items-center justify-center gap-3 py-3.5 px-6 rounded-xl font-bold text-white transition-all duration-300 transform hover:-translate-y-1 shadow-lg hover:shadow-2xl 
+                    ${
+                      /* Menggunakan logika warna yang lebih robust: bg-current mengambil warna text dari parent, atau fallback */ ""
+                    }
+                    bg-gradient-to-r from-slate-800 to-slate-900 border border-white/20 hover:border-white/50 group`}
+                  >
+                    {/* Icon Demo dengan warna proyek */}
+                    <FaExternalLinkAlt
+                      className={`${selectedProject.color} group-hover:text-white transition-colors`}
+                    />
+                    <span>Live Preview</span>
+                  </a>
+                )}
+
+                {/* BUTTON 2: GITHUB (Khusus Deteksi Cabai atau jika ada link github) */}
+                {selectedProject.github ? (
+                  <a
+                    href={selectedProject.github}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="flex-1 flex items-center justify-center gap-3 py-3.5 px-6 rounded-xl font-bold text-white bg-[#0a0a0a] border border-white/10 hover:bg-white hover:text-black transition-all duration-300 transform hover:-translate-y-1 group"
+                  >
+                    <FaGithub className="text-xl group-hover:scale-110 transition-transform" />
+                    <span>Source Code</span>
+                  </a>
+                ) : /* Jika tidak ada github, kita sembunyikan atau render placeholder kosong agar layout tetap rapi */
+                null}
+              </div>
+            </div>
+          </div>
+        </div>
       )}
     </div>
   );
