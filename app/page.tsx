@@ -368,7 +368,7 @@ export default function FeaturedProjects() {
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start pt-4">
               <a
-                href="/cv.pdf"
+                href="/cv (2).pdf"
                 download
                 className="px-8 py-3.5 bg-cyan-600 hover:bg-cyan-500 text-white font-bold rounded-lg transition-all shadow-lg shadow-cyan-500/20 flex items-center justify-center gap-2 group"
               >
